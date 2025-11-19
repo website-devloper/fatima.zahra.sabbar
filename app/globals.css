@@ -105,11 +105,11 @@ section {
   font-family: var(--font-headings);
   font-weight: 700;
   font-size: 1.8rem;
-  color: var(--primary-color) !important;
+  color: var(--text-color);
 }
 
 .nav-link {
-  color: var(--secondary-color) !important;
+  color: var(--text-color);
   font-weight: 500;
   position: relative;
   padding-bottom: 8px !important;
