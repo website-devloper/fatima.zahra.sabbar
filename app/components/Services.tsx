@@ -11,14 +11,32 @@ const servicesData = [
     icon: 'bi-gear-wide-connected',
     title: 'IT & Automation Solutions',
     description: 'Building custom scripts and AI-powered workflows to automate repetitive tasks and boost your efficiency.',
-    color: 'var(--accent-cyan)'
+    color: 'var(--secondary-color)'
   },
   {
     icon: 'bi-palette',
     title: 'UI/UX Design',
     description: 'Designing intuitive, user-friendly interfaces with a clean and modern aesthetic for your digital projects.',
-    color: 'var(--secondary-color)'
+    color: 'var(--accent-cyan)'
   },
+  {
+    icon: 'bi-phone',
+    title: 'Mobile App Development',
+    description: 'Building cross-platform mobile applications that provide seamless user experiences on iOS and Android.',
+    color: '#10b981'
+  },
+  {
+    icon: 'bi-graph-up-arrow',
+    title: 'SEO & Digital Marketing',
+    description: 'Optimizing your online presence to drive traffic, improve rankings, and grow your business reach.',
+    color: '#f59e0b'
+  },
+  {
+    icon: 'bi-cloud-check',
+    title: 'Cloud Solutions',
+    description: 'Deploying and managing secure, scalable cloud infrastructure to support your growing applications.',
+    color: '#ef4444'
+  }
 ];
 
 const Services = () => {
@@ -41,12 +59,9 @@ const Services = () => {
                 className="glass-panel p-4 h-100 text-center service-card position-relative"
                 style={{ '--hover-color': service.color } as React.CSSProperties}
               >
-                <div className="service-icon-box">
-                  <i className={service.icon}></i>
-                </div>
-
+                <i className={`${service.icon} fs-2 mb-3 d-block`} style={{ color: service.color }}></i>
                 <h4 className="mb-3 fw-bold text-white">{service.title}</h4>
-                <p className="text-muted mb-0">{service.description}</p>
+                <p className="text-white-50 small mb-0">{service.description}</p>
               </div>
             </div>
           ))}
