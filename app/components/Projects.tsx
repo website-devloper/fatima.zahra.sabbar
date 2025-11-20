@@ -22,38 +22,41 @@ const Projects = () => {
         </div>
 
         <div className="row g-4">
-          {projectsData.map((project, index) => (
-            <div className="col-lg-4 col-md-6" key={index}>
-              <div className="glass-panel h-100 project-card overflow-hidden position-relative group">
-                <div className="project-image-wrapper position-relative overflow-hidden">
-                  <div className="overlay position-absolute w-100 h-100 bg-dark opacity-0 z-2 transition-all"></div>
-                  <Image
-                    src={project.image}
-                    alt={project.title}
-                    width={400}
-                    height={300}
-                    className="img-fluid w-100 object-fit-cover transition-all"
-                    style={{ height: '200px' }}
-                  />
-                  <div className="project-action position-absolute top-50 start-50 translate-middle z-3 opacity-0 transition-all">
-                    <a href={project.link} className="btn btn-primary rounded-circle p-3 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
-                      <i className="bi bi-arrow-up-right fs-5"></i>
-                    </a>
+          {projectsData.map((project, index) => {
+            const colors = ['var(--primary-color)', 'var(--secondary-color)', 'var(--accent-cyan)', '#10b981', '#f59e0b', '#ef4444'];
+            return (
+              <div className="col-lg-4 col-md-6" key={index}>
+                <div className="glass-panel h-100 project-card about-card overflow-hidden position-relative group" style={{ '--hover-color': colors[index % colors.length] } as React.CSSProperties}>
+                  <div className="project-image-wrapper position-relative overflow-hidden">
+                    <div className="overlay position-absolute w-100 h-100 bg-dark opacity-0 z-2 transition-all"></div>
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      width={400}
+                      height={300}
+                      className="img-fluid w-100 object-fit-cover transition-all"
+                      style={{ height: '200px' }}
+                    />
+                    <div className="project-action position-absolute top-50 start-50 translate-middle z-3 opacity-0 transition-all">
+                      <a href={project.link} className="btn btn-primary rounded-circle p-3 d-flex align-items-center justify-content-center" style={{ width: '50px', height: '50px' }}>
+                        <i className="bi bi-arrow-up-right fs-5"></i>
+                      </a>
+                    </div>
                   </div>
-                </div>
 
-                <div className="p-4">
-                  <h5 className="text-white fw-bold mb-2">{project.title}</h5>
-                  <p className="text-white-50 small mb-3">{project.description}</p>
-                  <div className="d-flex flex-wrap gap-2">
-                    {project.tech.map((t, i) => (
-                      <span className="badge glass-badge fw-normal text-white-50" key={i}>{t}</span>
-                    ))}
+                  <div className="p-4">
+                    <h5 className="text-white fw-bold mb-2">{project.title}</h5>
+                    <p className="text-white-50 small mb-3">{project.description}</p>
+                    <div className="d-flex flex-wrap gap-2">
+                      {project.tech.map((t, i) => (
+                        <span className="badge glass-badge fw-normal text-white-50" key={i}>{t}</span>
+                      ))}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>
