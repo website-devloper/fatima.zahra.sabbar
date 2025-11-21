@@ -6,6 +6,7 @@ import About from './components/About';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Services from './components/Services';
+import Pricing from './components/Pricing';
 import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
@@ -33,6 +34,9 @@ export default function Home() {
             </div>
             <div id="services">
               <Services />
+            </div>
+            <div id="pricing">
+              <Pricing />
             </div>
             <div id="testimonials">
               <Testimonials />
