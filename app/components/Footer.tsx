@@ -3,20 +3,41 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="container text-center">
-        <div className="mb-3">
-          <a href="#" className="social-icon"><i className="bi bi-github"></i></a>
-          <a href="#" className="social-icon"><i className="bi bi-linkedin"></i></a>
-          <a href="#" className="social-icon"><i className="bi bi-twitter"></i></a>
+    <footer className="footer position-relative overflow-hidden">
+      <div className="footer-bg-glow"></div>
+      <div className="container text-center position-relative z-1">
+
+        {/* Brand */}
+        <div className="mb-4">
+          <a href="#" className="footer-brand text-gradient h3 text-decoration-none fw-bold">WevTex</a>
+          <p className="text-white mt-2 mx-auto" style={{ maxWidth: '400px' }}>
+            Building digital experiences with pixel-perfect precision.
+          </p>
         </div>
-        <div className="mb-3">
-          <a href="#home" className="mx-2">Home</a>|
-          <a href="#skills" className="mx-2">Skills</a>|
-          <a href="#projects" className="mx-2">Projects</a>|
-          <a href="#contact" className="mx-2">Contact</a>
+
+        {/* Navigation */}
+        <div className="mb-4 d-flex justify-content-center flex-wrap gap-4">
+          <a href="#home" className="footer-link">Home</a>
+          <a href="#about" className="footer-link">About</a>
+          <a href="#skills" className="footer-link">Skills</a>
+          <a href="#projects" className="footer-link">Projects</a>
+          <a href="#contact" className="footer-link">Contact</a>
         </div>
-        <p className="mb-0">&copy; {new Date().getFullYear()} WevTex. All Rights Reserved.</p>
+
+        {/* Socials */}
+        <div className="mb-4 d-flex justify-content-center gap-3">
+          <a href="#" className="footer-social-icon"><i className="bi bi-github"></i></a>
+          <a href="#" className="footer-social-icon"><i className="bi bi-linkedin"></i></a>
+          <a href="#" className="footer-social-icon"><i className="bi bi-twitter"></i></a>
+          <a href="#" className="footer-social-icon"><i className="bi bi-envelope"></i></a>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-top border-white border-opacity-10 pt-4">
+          <p className="mb-0 text-white small">
+            &copy; {new Date().getFullYear()} WevTex. All Rights Reserved.
+          </p>
+        </div>
       </div>
     </footer>
   );

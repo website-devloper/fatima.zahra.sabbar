@@ -1,0 +1,43 @@
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* ------------------------- */
+/* CONTACT SECTION           */
+/* ------------------------- */
+.contact-input {
+    background: rgba(15, 23, 42, 0.6) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-main) !important;
+    padding: 12px 20px;
+    border-radius: var(--radius-sm);
+    transition: all 0.3s ease;
+}
+
+.contact-input:focus {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-color: var(--primary-color) !important;
+    box-shadow: 0 0 0 4px var(--primary-glow) !important;
+}
+
+.contact-input::placeholder {
+    color: var(--text-muted);
+}
+
+.contact-image-wrapper {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
