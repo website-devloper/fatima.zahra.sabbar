@@ -2214,3 +2214,35 @@ section {
 .why-card:hover .card-border-bottom {
   width: 100%;
 }
+
+/* ------------------------- */
+/* FOOTER ENHANCEMENTS       */
+/* ------------------------- */
+.footer-social-btn {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.footer-social-btn:hover {
+  background: var(--primary-color) !important;
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 10px 20px -5px var(--primary-glow);
+  border-color: var(--primary-color) !important;
+}
+
+.footer-nav-link {
+  position: relative;
+  padding: 8px 16px;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.footer-nav-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--primary-color) !important;
+  transform: translateY(-2px);
+}
+
+.hover-white:hover {
+  color: white !important;
+  opacity: 1 !important;
+}
