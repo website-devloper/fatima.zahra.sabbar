@@ -8,14 +8,14 @@ const Contact = () => {
             <div className="hero-bg-glow-2" style={{ bottom: '10%', left: '-10%', width: '600px', height: '600px', opacity: '0.1' }}></div>
 
             <div className="container position-relative z-1">
-                <div className="text-center mb-5">
+                <div className="text-center mb-5" data-aos="fade-up">
                     <h3 className="section-subtitle">Get in Touch</h3>
                     <h2 className="section-title">Contact <span className="text-gradient">Me</span></h2>
                 </div>
 
                 <div className="row align-items-center g-5">
                     {/* Image Column */}
-                    <div className="col-lg-6">
+                    <div className="col-lg-6" data-aos="fade-right">
                         <div className="contact-image-wrapper position-relative">
                             <div className="position-absolute top-0 start-0 w-100 h-100 bg-gradient-primary opacity-10 rounded-4 blur-3xl"></div>
                             <img
@@ -28,7 +28,7 @@ const Contact = () => {
                     </div>
 
                     {/* Form Column */}
-                    <div className="col-lg-6">
+                    <div className="col-lg-6" data-aos="fade-left">
                         <div
                             className="why-card p-4 p-md-5"
                             style={{

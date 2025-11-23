@@ -114,7 +114,7 @@ const Testimonials = () => {
       <div className="hero-bg-glow-2" style={{ bottom: '10%', right: '-10%', width: '400px', height: '400px', opacity: '0.1' }}></div>
 
       <div className="container position-relative z-1">
-        <div className="text-center mb-5">
+        <div className="text-center mb-5" data-aos="fade-up">
           <h3 className="section-subtitle">Testimonials</h3>
           <h2 className="section-title">What <span className="text-gradient">Others Say</span></h2>
         </div>
@@ -123,7 +123,7 @@ const Testimonials = () => {
           {/* Slider Content */}
           <div className="row g-4 justify-content-center" style={{ minHeight: '400px' }}>
             {currentItems.map((testimonial, index) => (
-              <div className={`col - lg - ${ 12 / itemsPerPage === 4 ? '4' : 12 / itemsPerPage === 6 ? '6' : '12' } `} key={`${ activeIndex } -${ index } `}>
+              <div className={`col - lg - ${12 / itemsPerPage === 4 ? '4' : 12 / itemsPerPage === 6 ? '6' : '12'} `} key={`${activeIndex} -${index} `}>
                 <div
                   className="why-card h-100 testimonial-card position-relative d-flex flex-column animate-fade-in"
                   style={{
@@ -136,22 +136,22 @@ const Testimonials = () => {
                   <div className="card-glow"></div>
                   <div className="why-card-inner d-flex flex-column h-100">
                     <div className="card-blob"></div>
-                    
+
                     <i className="bi bi-quote quote-icon fs-1 mb-3 d-block" style={{ color: testimonial.iconColor }}></i>
-                    
+
                     <div className="mb-3">
                       {[...Array(5)].map((_, i) => (
                         <i key={i} className="bi bi-star-fill text-warning small me-1"></i>
                       ))}
                     </div>
-                    
+
                     <p className="why-card-desc fst-italic mb-4 flex-grow-1">"{testimonial.text}"</p>
-                    
+
                     <div className="mt-auto pt-3 border-top border-secondary border-opacity-25">
                       <h5 className="why-card-title h5 mb-1">{testimonial.name}</h5>
                       <span className="d-block small text-uppercase fw-bold" style={{ color: testimonial.iconColor }}>{testimonial.role}</span>
                     </div>
-                    
+
                     <div className="card-border-bottom"></div>
                   </div>
                 </div>
@@ -184,9 +184,9 @@ const Testimonials = () => {
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className={`btn p - 0 rounded - pill transition - all ${ i === activeIndex ? 'bg-primary' : 'bg-secondary opacity-50' } `}
+                className={`btn p - 0 rounded - pill transition - all ${i === activeIndex ? 'bg-primary' : 'bg-secondary opacity-50'} `}
                 style={{ width: i === activeIndex ? '32px' : '12px', height: '12px', border: 'none' }}
-                aria-label={`Go to slide ${ i + 1 } `}
+                aria-label={`Go to slide ${i + 1} `}
               />
             ))}
           </div>

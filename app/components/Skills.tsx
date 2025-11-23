@@ -62,13 +62,13 @@ const Skills = () => {
     <section id="skills" className="skills-section position-relative overflow-hidden">
       <div className="hero-bg-glow-2" style={{ top: '20%', right: '-10%', width: '600px', height: '600px', opacity: '0.15' }}></div>
       <div className="container position-relative z-1">
-        <div className="text-center mb-5">
+        <div className="text-center mb-5" data-aos="fade-up">
           <h3 className="section-subtitle">My Toolbox</h3>
           <h2 className="section-title">Skills & <span className="text-gradient">Technologies</span></h2>
         </div>
         <div className="row g-4">
           {skillsData.map((skill, index) => (
-            <div className="col-lg-4 col-md-6" key={index}>
+            <div className="col-lg-4 col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
               <div
                 className="why-card h-100"
                 style={{

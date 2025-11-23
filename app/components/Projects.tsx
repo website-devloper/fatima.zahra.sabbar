@@ -16,7 +16,7 @@ const Projects = () => {
       <div className="hero-bg-glow" style={{ bottom: '10%', left: '-10%', width: '600px', height: '600px', opacity: '0.1' }}></div>
 
       <div className="container position-relative z-1">
-        <div className="text-center mb-5">
+        <div className="text-center mb-5" data-aos="fade-up">
           <h3 className="section-subtitle">My Work</h3>
           <h2 className="section-title">Featured <span className="text-gradient">Projects</span></h2>
         </div>
@@ -25,7 +25,7 @@ const Projects = () => {
           {projectsData.map((project, index) => {
             const colors = ['var(--primary-color)', 'var(--secondary-color)', 'var(--accent-cyan)', '#10b981', '#f59e0b', '#ef4444'];
             return (
-              <div className="col-lg-4 col-md-6" key={index}>
+              <div className="col-lg-4 col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
                 <div className="glass-panel h-100 project-card about-card overflow-hidden position-relative group" style={{ '--hover-color': colors[index % colors.length] } as React.CSSProperties}>
                   <div className="project-image-wrapper position-relative overflow-hidden">
                     <div className="overlay position-absolute w-100 h-100 bg-dark opacity-0 z-2 transition-all"></div>

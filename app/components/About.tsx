@@ -51,13 +51,13 @@ const About = () => {
       </div>
 
       <div className="container position-relative z-1">
-        <div className="text-center mb-5">
+        <div className="text-center mb-5" data-aos="fade-up">
           <h3 className="section-subtitle">About Me</h3>
           <h2 className="section-title">Who I <span className="text-gradient">Am</span></h2>
         </div>
 
         <div className="row align-items-center gy-5">
-          <div className="col-lg-6">
+          <div className="col-lg-6" data-aos="fade-right">
             <div className="pe-lg-5">
               <p className="lead text-white mb-4">
                 I am the <span className="text-primary fw-bold"> Co-Founder </span>of <span className="text-primary fw-bold">WevTex </span>, a Full Stack Developer and IT Solutions Specialist
@@ -71,17 +71,17 @@ const About = () => {
               </p>
 
               <div className="d-flex gap-4 mt-5">
-                <div>
+                <div data-aos="zoom-in" data-aos-delay="100">
                   <h2 className="fw-bold text-gradient mb-0">3+</h2>
                   <p className="small text-white-1000">Years Exp.</p>
                 </div>
                 <div className="vr bg-secondary opacity-25"></div>
-                <div>
+                <div data-aos="zoom-in" data-aos-delay="200">
                   <h2 className="fw-bold text-gradient mb-0">30+</h2>
                   <p className="small text-white-1000">Projects</p>
                 </div>
                 <div className="vr bg-secondary opacity-25"></div>
-                <div>
+                <div data-aos="zoom-in" data-aos-delay="300">
                   <h2 className="fw-bold text-gradient mb-0">100%</h2>
                   <p className="small text-white-1000">Satisfaction</p>
                 </div>
@@ -92,7 +92,7 @@ const About = () => {
           <div className="col-lg-6">
             <div className="row g-4">
               {aboutCards.map((card, index) => (
-                <div className="col-md-6" key={index}>
+                <div className="col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
                   <div
                     className="why-card h-100"
                     style={{

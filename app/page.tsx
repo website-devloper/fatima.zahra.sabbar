@@ -12,7 +12,17 @@ import Testimonials from './components/Testimonials';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import './globals.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 export default function Home() {
+  useEffect(() => {
+    AOS.init({
+      duration: 1000,
+      once: false,
+      mirror: false,
+    });
+  }, []);
 
 
   return (

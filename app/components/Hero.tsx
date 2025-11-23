@@ -14,17 +14,17 @@ const Hero = () => {
 
       <div className="container pt-5 position-relative z-1">
         <div className="row align-items-center">
-          <div className="col-lg-7 text-center text-lg-start">
-            <div className="why-badge mb-4">
+          <div className="col-lg-7 text-center text-lg-start" data-aos="fade-right">
+            <div className="why-badge mb-4" data-aos="fade-up" data-aos-delay="100">
               <i className="bi bi-stars me-2"></i> Available for Freelance
             </div>
 
-            <h1 className="hero-title">
+            <h1 className="hero-title" data-aos="fade-up" data-aos-delay="200">
               All Your Digital Needs
               <span className="text-gradient"> One Expert</span>
             </h1>
 
-            <h2 className="hero-subtitle">
+            <h2 className="hero-subtitle" data-aos="fade-up" data-aos-delay="300">
               <TypeAnimation
                 sequence={[
                   'Full Stack Development', 2000,
@@ -41,11 +41,11 @@ const Hero = () => {
               />
             </h2>
 
-            <p className="lead text-white-100 mb-5" style={{ maxWidth: '600px' }}>
+            <p className="lead text-white-100 mb-5" style={{ maxWidth: '600px' }} data-aos="fade-up" data-aos-delay="400">
               Business websites, tools, and automations that deliver results.
             </p>
 
-            <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start">
+            <div className="d-flex flex-column flex-sm-row gap-3 justify-content-center justify-content-lg-start" data-aos="fade-up" data-aos-delay="500">
               <Link href="#projects" className="btn btn-primary">
                 View My Work
               </Link>
@@ -54,7 +54,7 @@ const Hero = () => {
               </Link>
             </div>
 
-            <div className="mt-5 d-flex align-items-center gap-4 justify-content-center justify-content-lg-start text-white small">
+            <div className="mt-5 d-flex align-items-center gap-4 justify-content-center justify-content-lg-start text-white small" data-aos="fade-up" data-aos-delay="600">
               <div className="d-flex align-items-center gap-2">
                 <i className="bi bi-check-circle-fill text-primary"></i>
                 <span>Clean Code</span>
@@ -70,7 +70,7 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="col-lg-5 mt-5 mt-lg-0">
+          <div className="col-lg-5 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
             <div className="hero-image-wrapper">
               <Image
                 src="/photome1.png"

@@ -65,14 +65,14 @@ const Services = () => {
       <div className="hero-bg-glow-2" style={{ bottom: '10%', left: '-10%', width: '500px', height: '500px', opacity: '0.15' }}></div>
 
       <div className="container position-relative z-1">
-        <div className="text-center mb-5">
+        <div className="text-center mb-5" data-aos="fade-up">
           <h3 className="section-subtitle">What I Offer</h3>
           <h2 className="section-title">Personal <span className="text-gradient">Services</span></h2>
         </div>
 
         <div className="row g-4 justify-content-center">
           {servicesData.map((service, index) => (
-            <div className="col-lg-4 col-md-6" key={index}>
+            <div className="col-lg-4 col-md-6" key={index} data-aos="fade-up" data-aos-delay={index * 100}>
               <div
                 className="why-card h-100"
                 style={{
@@ -86,7 +86,7 @@ const Services = () => {
                 <div className="why-card-inner">
                   <div className="card-blob"></div>
                   <div className="why-icon-wrapper">
-                    <i className={`bi ${service.icon}`}></i>
+                    <i className={`bi ${ service.icon } `}></i>
                   </div>
                   <h3 className="why-card-title">{service.title}</h3>
                   <p className="why-card-desc">{service.description}</p>
