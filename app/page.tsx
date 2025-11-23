@@ -36,7 +36,7 @@ export default function Home() {
               __html: JSON.stringify({
                 "@context": "https://schema.org",
                 "@type": "Person",
-                "name": "Your Name",
+                "name": "Fatima Zahra Sabbar",
                 "url": "https://yourportfolio.com",
                 "image": "https://yourportfolio.com/photome1.png",
                 "sameAs": [
