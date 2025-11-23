@@ -10,7 +10,7 @@ const Footer = () => {
           <div className="col-lg-10">
 
             <div className="mb-5" data-aos="fade-up">
-              <a href="#" className="footer-brand text-gradient display-4 text-decoration-none fw-bold d-inline-block mb-3">WevTex</a>
+              <a href="#" className="footer-brand text-gradient display-4 text-decoration-none fw-bold d-inline-block mb-3">FZ.Dev</a>
               <p className="text-white-100 lead mx-auto opacity-75" style={{ maxWidth: '600px' }}>
                 Crafting digital experiences that merge creativity with code.
               </p>

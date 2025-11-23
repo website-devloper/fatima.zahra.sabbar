@@ -40,7 +40,7 @@ const Navbar = () => {
     <nav className={`navbar navbar-expand-lg fixed-top ${scrolled ? 'scrolled' : ''}`}>
       <div className="container mx-auto flex items-center justify-between p-4">
         <Link href="#home" className="navbar-brand">
-          Fatima.Zahra.Dev
+          FZ.Dev
         </Link>
 
         <button
@@ -73,6 +73,15 @@ const Navbar = () => {
               </li>
             ))}
           </ul>
+
+          <div className="d-flex align-items-center gap-3 ms-lg-4 mt-3 mt-lg-0">
+            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" className="nav-link p-0" aria-label="GitHub">
+              <i className="bi bi-github fs-5"></i>
+            </a>
+            <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="nav-link p-0" aria-label="LinkedIn">
+              <i className="bi bi-linkedin fs-5"></i>
+            </a>
+          </div>
         </div>
       </div>
     </nav>
