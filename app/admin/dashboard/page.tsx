@@ -100,6 +100,10 @@ export default function AdminDashboard() {
                                 <i className="bi bi-house me-2"></i>
                                 View Site
                             </Link>
+                            <Link href="/admin/contacts" className="btn btn-outline-primary">
+                                <i className="bi bi-envelope me-2"></i>
+                                Contacts
+                            </Link>
                             <Link href="/admin/posts/new" className="btn btn-primary">
                                 <i className="bi bi-plus-circle me-2"></i>
                                 New Post
