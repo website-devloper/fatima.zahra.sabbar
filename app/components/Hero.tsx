@@ -81,10 +81,10 @@ const Hero = () => {
           <div className="col-lg-5 mt-5 mt-lg-0" data-aos="fade-left" data-aos-delay="200">
             <div className="hero-image-wrapper">
               <Image
-                src="/photome1.png"
+                src="/It-Solutions.jpg"
                 alt="Fatima Zahra Sabbar - Full Stack Developer"
-                width={600}
-                height={600}
+                width={800}
+                height={800}
                 className="img-fluid position-relative z-1"
                 style={{ borderRadius: '30% 70% 70% 30% / 30% 30% 70% 70%' }}
                 priority
