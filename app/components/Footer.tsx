@@ -1,6 +1,12 @@
+'use client';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useLocale } from './LocaleProvider';
 
 const Footer = () => {
+  const { t } = useLocale();
+
+  const navItems = ['home', 'about', 'skills', 'projects', 'contact'];
+
   return (
     <footer className="footer position-relative overflow-hidden py-5">
       <div className="hero-bg-glow" style={{ bottom: '-20%', left: '50%', transform: 'translateX(-50%)', width: '1200px', height: '500px', opacity: '0.15' }}></div>
@@ -12,19 +18,19 @@ const Footer = () => {
             <div className="mb-5" data-aos="fade-up">
               <a href="#" className="footer-brand text-gradient display-4 text-decoration-none fw-bold d-inline-block mb-3">FZ.Dev</a>
               <p className="text-white-100 lead mx-auto opacity-75" style={{ maxWidth: '600px' }}>
-                Crafting digital experiences that merge creativity with code.
+                {t('footer.tagline')}
               </p>
             </div>
 
             <div className="mb-5 d-inline-block" data-aos="fade-up" data-aos-delay="100">
               <div className="glass-panel px-4 py-3 rounded-pill d-flex flex-wrap justify-content-center gap-4 border-white border-opacity-10">
-                {['Home', 'About', 'Skills', 'Projects', 'Contact'].map((item, index) => (
+                {navItems.map((item, index) => (
                   <a
                     key={index}
-                    href={`#${item.toLowerCase()}`}
+                    href={`#${item}`}
                     className="text-white text-decoration-none fw-medium footer-nav-link"
                   >
-                    {item}
+                    {t(`nav.${item}`)}
                   </a>
                 ))}
               </div>
@@ -58,13 +64,13 @@ const Footer = () => {
               <div className="row align-items-center justify-content-between">
                 <div className="col-md-6 text-center text-md-start mb-3 mb-md-0">
                   <p className="mb-0 text-white-100 small opacity-50">
-                    &copy; {new Date().getFullYear()} <span className="text-white fw-bold opacity-100">FZ.Dev</span>. All Rights Reserved.
+                    &copy; {new Date().getFullYear()} <span className="text-white fw-bold opacity-100">FZ.Dev</span>. {t('footer.copyright')}
                   </p>
                 </div>
                 <div className="col-md-6 text-center text-md-end">
                   <div className="d-flex justify-content-center justify-content-md-end gap-4">
-                    <a href="#" className="text-white-100 text-decoration-none small opacity-50 hover-white">Privacy Policy</a>
-                    <a href="#" className="text-white-100 text-decoration-none small opacity-50 hover-white">Terms of Service</a>
+                    <a href="#" className="text-white-100 text-decoration-none small opacity-50 hover-white">{t('footer.privacyPolicy')}</a>
+                    <a href="#" className="text-white-100 text-decoration-none small opacity-50 hover-white">{t('footer.termsOfService')}</a>
                   </div>
                 </div>
               </div>

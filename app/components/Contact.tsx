@@ -1,6 +1,10 @@
+'use client';
 import React from 'react';
+import { useLocale } from './LocaleProvider';
 
 const Contact = () => {
+    const { t } = useLocale();
+
     return (
         <section className="contact-section position-relative overflow-hidden" id="contact">
             {/* Background Glow Effects */}
@@ -9,8 +13,8 @@ const Contact = () => {
 
             <div className="container position-relative z-1">
                 <div className="text-center mb-5" data-aos="fade-up">
-                    <h3 className="section-subtitle">Get in Touch</h3>
-                    <h2 className="section-title">Contact <span className="text-gradient">Me</span></h2>
+                    <h3 className="section-subtitle">{t('contact.subtitle')}</h3>
+                    <h2 className="section-title">{t('contact.title')} <span className="text-gradient">{t('contact.titleGradient')}</span></h2>
                 </div>
 
                 <div className="row align-items-center g-5">
@@ -43,10 +47,9 @@ const Contact = () => {
                                 <div className="card-blob"></div>
 
                                 <div className="mb-4">
-                                    <h3 className="why-card-title mb-3">Let's Work Together</h3>
+                                    <h3 className="why-card-title mb-3">{t('contact.formTitle')}</h3>
                                     <p className="why-card-desc mb-0">
-                                        Have a project in mind or just want to say hello? Feel free to reach out!
-                                        I'm always open to discussing new ideas and opportunities.
+                                        {t('contact.formDescription')}
                                     </p>
                                 </div>
 
@@ -60,7 +63,7 @@ const Contact = () => {
                                                     type="text"
                                                     name="name"
                                                     className="form-control contact-input bg-transparent text-white border-secondary border-opacity-25"
-                                                    placeholder="Your Name"
+                                                    placeholder={t('contact.placeholders.name')}
                                                     required
                                                     style={{ padding: '12px 15px' }}
                                                 />
@@ -72,7 +75,7 @@ const Contact = () => {
                                                     type="email"
                                                     name="email"
                                                     className="form-control contact-input bg-transparent text-white border-secondary border-opacity-25"
-                                                    placeholder="Your Email"
+                                                    placeholder={t('contact.placeholders.email')}
                                                     required
                                                     style={{ padding: '12px 15px' }}
                                                 />
@@ -85,7 +88,7 @@ const Contact = () => {
                                                 type="text"
                                                 name="_subject"
                                                 className="form-control contact-input bg-transparent text-white border-secondary border-opacity-25"
-                                                placeholder="Subject"
+                                                placeholder={t('contact.placeholders.subject')}
                                                 required
                                                 style={{ padding: '12px 15px' }}
                                             />
@@ -97,7 +100,7 @@ const Contact = () => {
                                                 name="message"
                                                 className="form-control contact-input bg-transparent text-white border-secondary border-opacity-25"
                                                 rows={5}
-                                                placeholder="Your Message"
+                                                placeholder={t('contact.placeholders.message')}
                                                 required
                                                 style={{ padding: '12px 15px', resize: 'none' }}
                                             ></textarea>
@@ -105,7 +108,7 @@ const Contact = () => {
                                     </div>
                                     <div className="text-center">
                                         <button type="submit" className="btn btn-primary w-100 py-3 fw-bold">
-                                            Send Message <i className="bi bi-send ms-2"></i>
+                                            {t('contact.button')} <i className="bi bi-send ms-2"></i>
                                         </button>
                                     </div>
                                 </form>

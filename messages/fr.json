@@ -61,6 +61,42 @@
             }
         }
     },
+    "skills": {
+        "subtitle": "Ma Boîte à Outils",
+        "title": "Compétences &",
+        "titleGradient": "Technologies",
+        "items": {
+            "frontend": {
+                "title": "Frontend",
+                "description": "HTML, CSS, JS, React, Next.js, Bootstrap"
+            },
+            "backend": {
+                "title": "Backend",
+                "description": "PHP, Laravel, Node.js"
+            },
+            "databases": {
+                "title": "Bases de Données",
+                "description": "MySQL, MongoDB"
+            },
+            "devops": {
+                "title": "Outils & DevOps",
+                "description": "Git, Docker, APIs, Bases Linux"
+            },
+            "ai": {
+                "title": "Outils IA",
+                "description": "Flux d'automatisation, intégration de chatbot"
+            },
+            "security": {
+                "title": "Cybersécurité",
+                "description": "Bases de cybersécurité et meilleures pratiques"
+            }
+        }
+    },
+    "projects": {
+        "subtitle": "Mon Travail",
+        "title": "Projets",
+        "titleGradient": "En Vedette"
+    },
     "services": {
         "subtitle": "Ce Que J'Offre",
         "title": "Services",
@@ -91,6 +127,38 @@
                 "description": "Déploiement et gestion d'une infrastructure cloud sécurisée et évolutive pour soutenir vos applications en croissance."
             }
         }
+    },
+    "testimonials": {
+        "subtitle": "Témoignages",
+        "title": "Ce Que",
+        "titleGradient": "Disent les Autres"
+    },
+    "contact": {
+        "subtitle": "Contactez-Moi",
+        "title": "Me",
+        "titleGradient": "Contacter",
+        "formTitle": "Travaillons Ensemble",
+        "formDescription": "Vous avez un projet en tête ou vous voulez simplement dire bonjour ? N'hésitez pas à me contacter ! Je suis toujours ouverte à discuter de nouvelles idées et opportunités.",
+        "placeholders": {
+            "name": "Votre Nom",
+            "email": "Votre Email",
+            "subject": "Sujet",
+            "message": "Votre Message"
+        },
+        "button": "Envoyer le Message"
+    },
+    "footer": {
+        "tagline": "Créer des expériences numériques qui fusionnent créativité et code.",
+        "navItems": [
+            "Accueil",
+            "À Propos",
+            "Compétences",
+            "Projets",
+            "Contact"
+        ],
+        "copyright": "Tous Droits Réservés.",
+        "privacyPolicy": "Politique de Confidentialité",
+        "termsOfService": "Conditions d'Utilisation"
     },
     "whyChooseMe": {
         "subtitle": "Ma Proposition de Valeur",

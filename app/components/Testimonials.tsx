@@ -1,6 +1,8 @@
+'use client';
 
 import { useState, useEffect } from 'react';
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { useLocale } from './LocaleProvider';
 
 const testimonialsData = [
   {
@@ -60,6 +62,7 @@ const testimonialsData = [
 ];
 
 const Testimonials = () => {
+  const { t } = useLocale();
   const [activeIndex, setActiveIndex] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(3);
 
@@ -115,15 +118,15 @@ const Testimonials = () => {
 
       <div className="container position-relative z-1">
         <div className="text-center mb-5" data-aos="fade-up">
-          <h3 className="section-subtitle">Testimonials</h3>
-          <h2 className="section-title">What <span className="text-gradient">Others Say</span></h2>
+          <h3 className="section-subtitle">{t('testimonials.subtitle')}</h3>
+          <h2 className="section-title">{t('testimonials.title')} <span className="text-gradient">{t('testimonials.titleGradient')}</span></h2>
         </div>
 
         <div className="position-relative px-lg-5">
           {/* Slider Content */}
           <div className="row g-4 justify-content-center" style={{ minHeight: '400px' }}>
             {currentItems.map((testimonial, index) => (
-              <div className={`col - lg - ${12 / itemsPerPage === 4 ? '4' : 12 / itemsPerPage === 6 ? '6' : '12'} `} key={`${activeIndex} -${index} `}>
+              <div className={`col-lg-${12 / itemsPerPage === 4 ? '4' : 12 / itemsPerPage === 6 ? '6' : '12'}`} key={`${activeIndex}-${index}`}>
                 <div
                   className="why-card h-100 testimonial-card position-relative d-flex flex-column animate-fade-in"
                   style={{
@@ -184,9 +187,9 @@ const Testimonials = () => {
               <button
                 key={i}
                 onClick={() => setActiveIndex(i)}
-                className={`btn p - 0 rounded - pill transition - all ${i === activeIndex ? 'bg-primary' : 'bg-secondary opacity-50'} `}
+                className={`btn p-0 rounded-pill transition-all ${i === activeIndex ? 'bg-primary' : 'bg-secondary opacity-50'}`}
                 style={{ width: i === activeIndex ? '32px' : '12px', height: '12px', border: 'none' }}
-                aria-label={`Go to slide ${i + 1} `}
+                aria-label={`Go to slide ${i + 1}`}
               />
             ))}
           </div>

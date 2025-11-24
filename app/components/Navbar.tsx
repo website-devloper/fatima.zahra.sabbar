@@ -3,13 +3,15 @@
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import LanguageSwitcher from './LanguageSwitcher';
+import { useLocale } from './LocaleProvider';
 
 const Navbar = () => {
+  const { t } = useLocale();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const navItems = ['Home', 'About', 'Skills', 'Projects', 'Services', 'Testimonials', 'Contact'];
+  const navItems = ['home', 'about', 'skills', 'projects', 'services', 'testimonials', 'contact'];
 
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
@@ -23,9 +25,9 @@ const Navbar = () => {
       // Active section tracking
       let currentSection = 'home';
       for (const item of navItems) {
-        const section = document.getElementById(item.toLowerCase());
+        const section = document.getElementById(item);
         if (section && window.scrollY >= section.offsetTop - 150) {
-          currentSection = item.toLowerCase();
+          currentSection = item;
         }
       }
       setActiveSection(currentSection);
@@ -78,13 +80,13 @@ const Navbar = () => {
                 data-aos-delay={100 + (index * 50)}
               >
                 <Link
-                  href={`#${item.toLowerCase()}`}
-                  className={`nav-link ${activeSection === item.toLowerCase() ? 'active' : ''} d-inline-block`}
+                  href={`#${item}`}
+                  className={`nav-link ${activeSection === item ? 'active' : ''} d-inline-block`}
                   onClick={() => {
                     setIsOpen(false);
                   }}
                 >
-                  {item.charAt(0).toUpperCase() + item.slice(1)}
+                  {t(`nav.${item}`)}
                 </Link>
               </li>
             ))}

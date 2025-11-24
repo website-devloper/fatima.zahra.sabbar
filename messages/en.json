@@ -61,6 +61,42 @@
             }
         }
     },
+    "skills": {
+        "subtitle": "My Toolbox",
+        "title": "Skills &",
+        "titleGradient": "Technologies",
+        "items": {
+            "frontend": {
+                "title": "Frontend",
+                "description": "HTML, CSS, JS, React, Next.js, Bootstrap"
+            },
+            "backend": {
+                "title": "Backend",
+                "description": "PHP, Laravel, Node.js"
+            },
+            "databases": {
+                "title": "Databases",
+                "description": "MySQL, MongoDB"
+            },
+            "devops": {
+                "title": "Tools & DevOps",
+                "description": "Git, Docker, APIs, Linux basics"
+            },
+            "ai": {
+                "title": "AI Tools",
+                "description": "Automation workflows, chatbot integration"
+            },
+            "security": {
+                "title": "Cybersecurity",
+                "description": "Cybersecurity basics and best practices"
+            }
+        }
+    },
+    "projects": {
+        "subtitle": "My Work",
+        "title": "Featured",
+        "titleGradient": "Projects"
+    },
     "services": {
         "subtitle": "What I Offer",
         "title": "Personal",
@@ -91,6 +127,38 @@
                 "description": "Deploying and managing secure, scalable cloud infrastructure to support your growing applications."
             }
         }
+    },
+    "testimonials": {
+        "subtitle": "Testimonials",
+        "title": "What",
+        "titleGradient": "Others Say"
+    },
+    "contact": {
+        "subtitle": "Get in Touch",
+        "title": "Contact",
+        "titleGradient": "Me",
+        "formTitle": "Let's Work Together",
+        "formDescription": "Have a project in mind or just want to say hello? Feel free to reach out! I'm always open to discussing new ideas and opportunities.",
+        "placeholders": {
+            "name": "Your Name",
+            "email": "Your Email",
+            "subject": "Subject",
+            "message": "Your Message"
+        },
+        "button": "Send Message"
+    },
+    "footer": {
+        "tagline": "Crafting digital experiences that merge creativity with code.",
+        "navItems": [
+            "Home",
+            "About",
+            "Skills",
+            "Projects",
+            "Contact"
+        ],
+        "copyright": "All Rights Reserved.",
+        "privacyPolicy": "Privacy Policy",
+        "termsOfService": "Terms of Service"
     },
     "whyChooseMe": {
         "subtitle": "My Value Proposition",

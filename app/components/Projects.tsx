@@ -1,5 +1,7 @@
 // /app/components/Projects.tsx
+'use client';
 import Image from 'next/image';
+import { useLocale } from './LocaleProvider';
 
 const projectsData = [
   { title: 'Portfolio Website', description: 'This personal portfolio, built with Next.js and a futuristic design.', tech: ['Next.js', 'Bootstrap', 'TypeScript'], link: '#', image: '/window.svg' },
@@ -11,14 +13,16 @@ const projectsData = [
 ];
 
 const Projects = () => {
+  const { t } = useLocale();
+
   return (
     <section id="projects" className="projects-section position-relative overflow-hidden">
       <div className="hero-bg-glow" style={{ bottom: '10%', left: '-10%', width: '600px', height: '600px', opacity: '0.1' }}></div>
 
       <div className="container position-relative z-1">
         <div className="text-center mb-5" data-aos="fade-up">
-          <h3 className="section-subtitle">My Work</h3>
-          <h2 className="section-title">Featured <span className="text-gradient">Projects</span></h2>
+          <h3 className="section-subtitle">{t('projects.subtitle')}</h3>
+          <h2 className="section-title">{t('projects.title')} <span className="text-gradient">{t('projects.titleGradient')}</span></h2>
         </div>
 
         <div className="row g-4">
@@ -64,4 +68,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
