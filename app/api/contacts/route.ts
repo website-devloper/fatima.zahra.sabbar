@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import dbConnect from '@/lib/mongodb';
 import Contact from '@/models/Contact';
+import nodemailer from 'nodemailer';
 
 // GET all contacts
 export async function GET(request: NextRequest) {
@@ -53,22 +54,68 @@ export async function GET(request: NextRequest) {
 // POST create a new contact submission  
 export async function POST(request: NextRequest) {
     try {
-        if (!process.env.MONGODB_URI) {
-            return NextResponse.json({
-                success: false,
-                error: 'Database not configured'
-            }, { status: 500 });
+        const body = await request.json();
+        let contact;
+
+        // 1. Try to save to Database (if configured)
+        if (process.env.MONGODB_URI) {
+            try {
+                await dbConnect();
+                contact = await Contact.create(body);
+            } catch (dbError) {
+                console.error('Database save failed:', dbError);
+                // Continue to send email even if DB fails
+            }
         }
 
-        await dbConnect();
+        // 2. Send Email using Nodemailer
+        if (process.env.EMAIL_USER && process.env.EMAIL_PASS) {
+            try {
+                const transporter = nodemailer.createTransport({
+                    service: 'gmail',
+                    auth: {
+                        user: process.env.EMAIL_USER,
+                        pass: process.env.EMAIL_PASS,
+                    },
+                });
 
-        const body = await request.json();
-        const contact = await Contact.create(body);
+                const mailOptions = {
+                    from: process.env.EMAIL_USER,
+                    to: 'fatimazahra20033@gmail.com', // Destination email
+                    subject: `New Portfolio Contact: ${body.subject}`,
+                    text: `
+                        Name: ${body.name}
+                        Email: ${body.email}
+                        Subject: ${body.subject}
+                        Message: ${body.message}
+                    `,
+                    html: `
+                        <h3>New Contact Form Submission</h3>
+                        <p><strong>Name:</strong> ${body.name}</p>
+                        <p><strong>Email:</strong> ${body.email}</p>
+                        <p><strong>Subject:</strong> ${body.subject}</p>
+                        <p><strong>Message:</strong></p>
+                        <p>${body.message}</p>
+                    `,
+                };
+
+                await transporter.sendMail(mailOptions);
+            } catch (emailError) {
+                console.error('Email send failed:', emailError);
+                // If email fails and DB failed/not configured, then it's a real error
+                if (!contact) {
+                    throw new Error('Failed to send message');
+                }
+            }
+        } else {
+            console.warn('Email credentials not found in environment variables');
+        }
 
         return NextResponse.json(
             {
                 success: true,
                 data: contact,
+                message: 'Message processed'
             },
             { status: 201 }
         );
