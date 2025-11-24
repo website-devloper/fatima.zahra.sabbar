@@ -26,16 +26,32 @@ const Contact = () => {
         setSubmitStatus('idle');
 
         try {
-            const response = await fetch('/api/contacts', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...formData, status: 'new' }),
-            });
+            // Send to both FormSubmit (Email) and Database concurrently
+            const [emailResponse, dbResponse] = await Promise.all([
+                fetch('https://formsubmit.co/ajax/fatimazahra20033@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        name: formData.name,
+                        email: formData.email,
+                        subject: formData.subject,
+                        message: formData.message,
+                        _subject: `New Portfolio Contact: ${formData.subject}`,
+                        _template: 'table'
+                    })
+                }),
+                fetch('/api/contacts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ ...formData, status: 'new' }),
+                })
+            ]);
 
-            const data = await response.json();
-
-            if (!response.ok || !data.success) {
-                throw new Error(data.error || 'Failed to send message');
+            if (!emailResponse.ok) {
+                throw new Error('Failed to send email via FormSubmit');
             }
 
             setSubmitStatus('success');
