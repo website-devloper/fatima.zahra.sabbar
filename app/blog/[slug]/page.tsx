@@ -1,8 +1,7 @@
 'use client';
 
-import { use } from 'react';
+import { use, useState, useEffect } from 'react';
 import Link from 'next/link';
-import { getBlogPostBySlug, getRecentBlogPosts } from '../../data/blogData';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { LocaleProvider } from '../../components/LocaleProvider';
@@ -13,10 +12,70 @@ interface BlogPostPageProps {
     }>;
 }
 
+interface BlogPost {
+    _id: string;
+    slug: string;
+    title: string;
+    excerpt: string;
+    content: string;
+    image: string;
+    createdAt: string;
+    author: string;
+    category: string;
+    tags: string[];
+    readTime: string;
+}
+
 export default function BlogPost({ params }: BlogPostPageProps) {
     const { slug } = use(params);
-    const post = getBlogPostBySlug(slug);
-    const recentPosts = getRecentBlogPosts(3).filter(p => p.slug !== slug);
+    const [post, setPost] = useState<BlogPost | null>(null);
+    const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const fetchPost = async () => {
+            try {
+                // Fetch the main post
+                const response = await fetch(`/api/blog/${slug}`);
+                const data = await response.json();
+
+                if (data.success) {
+                    setPost(data.data);
+
+                    // Fetch related posts
+                    const relatedResponse = await fetch('/api/blog?limit=3');
+                    const relatedData = await relatedResponse.json();
+                    if (relatedData.success) {
+                        // Filter out current post
+                        const filtered = relatedData.data.filter((p: BlogPost) => p.slug !== slug);
+                        setRelatedPosts(filtered.slice(0, 3));
+                    }
+                }
+            } catch (error) {
+                console.error('Error fetching blog post:', error);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPost();
+    }, [slug]);
+
+    if (loading) {
+        return (
+            <LocaleProvider>
+                <div>
+                    <Navbar />
+                    <main className="pt-5 mt-5">
+                        <div className="container text-center py-5">
+                            <p className="text-white-60">Loading...</p>
+                        </div>
+                    </main>
+                    <Footer />
+                </div>
+            </LocaleProvider>
+        );
+    }
 
     if (!post) {
         return (
@@ -80,7 +139,7 @@ export default function BlogPost({ params }: BlogPostPageProps) {
                                         </span>
                                         <span>
                                             <i className="bi bi-calendar3 me-2"></i>
-                                            {new Date(post.date).toLocaleDateString('en-US', {
+                                            {new Date(post.createdAt).toLocaleDateString('en-US', {
                                                 year: 'numeric',
                                                 month: 'long',
                                                 day: 'numeric'
@@ -126,7 +185,7 @@ export default function BlogPost({ params }: BlogPostPageProps) {
                                         <h5 className="text-white mb-3">Share this article</h5>
                                         <div className="d-flex gap-3">
                                             <a
-                                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(window.location.href)}`}
+                                                href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="btn btn-outline-primary"
@@ -135,7 +194,7 @@ export default function BlogPost({ params }: BlogPostPageProps) {
                                                 Twitter
                                             </a>
                                             <a
-                                                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
+                                                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="btn btn-outline-primary"
@@ -144,7 +203,7 @@ export default function BlogPost({ params }: BlogPostPageProps) {
                                                 LinkedIn
                                             </a>
                                             <a
-                                                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                                                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}`}
                                                 target="_blank"
                                                 rel="noopener noreferrer"
                                                 className="btn btn-outline-primary"
@@ -160,16 +219,16 @@ export default function BlogPost({ params }: BlogPostPageProps) {
                     </section>
 
                     {/* Related Posts */}
-                    {recentPosts.length > 0 && (
+                    {relatedPosts.length > 0 && (
                         <section className="py-5">
                             <div className="container">
                                 <h3 className="h2 fw-bold text-white mb-4" data-aos="fade-up">
                                     More Articles
                                 </h3>
                                 <div className="row g-4">
-                                    {recentPosts.map((relatedPost, index) => (
+                                    {relatedPosts.map((relatedPost, index) => (
                                         <div
-                                            key={relatedPost.id}
+                                            key={relatedPost._id}
                                             className="col-lg-4 col-md-6"
                                             data-aos="fade-up"
                                             data-aos-delay={index * 100}
