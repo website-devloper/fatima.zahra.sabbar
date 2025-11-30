@@ -69,6 +69,7 @@ export default function EditProject({ params }: EditProjectProps) {
         const file = e.target.files[0];
         const formData = new FormData();
         formData.append('file', file);
+        formData.append('folder', 'projects'); // Specify folder for projects
 
         setUploading(true);
 
