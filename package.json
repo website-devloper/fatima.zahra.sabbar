@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@types/aos": "^3.0.7",
+    "@vercel/blob": "^2.0.0",
     "aos": "^2.3.4",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
