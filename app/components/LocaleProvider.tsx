@@ -12,9 +12,11 @@ interface LocaleContextType {
 
 const LocaleContext = createContext<LocaleContextType | undefined>(undefined);
 
+type MessageValue = string | { [key: string]: MessageValue };
+
 export function LocaleProvider({ children }: { children: ReactNode }) {
     const [locale, setLocaleState] = useState<Locale>('en');
-    const [messages, setMessages] = useState<Record<string, any>>({});
+    const [messages, setMessages] = useState<Record<string, MessageValue>>({});
     const [mounted, setMounted] = useState(false);
 
     useEffect(() => {
@@ -42,7 +44,7 @@ export function LocaleProvider({ children }: { children: ReactNode }) {
 
     const t = (key: string): string => {
         const keys = key.split('.');
-        let value: any = messages;
+        let value: MessageValue | undefined = messages;
 
         for (const k of keys) {
             if (value && typeof value === 'object') {

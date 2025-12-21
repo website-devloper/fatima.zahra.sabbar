@@ -4,9 +4,21 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useLocale } from './LocaleProvider';
 
+interface IProject {
+  _id?: string;
+  title: string;
+  description: string;
+  image: string;
+  tech: string[];
+  link: string;
+  category: string;
+  featured: boolean;
+  order: number;
+}
+
 const Projects = () => {
   const { t } = useLocale();
-  const [projects, setProjects] = useState<any[]>([]);
+  const [projects, setProjects] = useState<IProject[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {

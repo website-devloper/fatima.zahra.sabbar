@@ -22,7 +22,7 @@ const Navbar = () => {
   useEffect(() => {
     // Check if we're on a blog page
     if (pathname && pathname.includes('/blog/')) {
-      setActiveSection('blog');
+      setTimeout(() => setActiveSection('blog'), 0);
       return;
     }
 
