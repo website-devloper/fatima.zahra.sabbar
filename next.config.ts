@@ -1,11 +1,10 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  // SEO optimizations
-  trailingSlash: false, // Prevents duplicate content issues
-  compress: true, // Enable gzip compression for better performance
+  trailingSlash: false, 
+  compress: true, 
 
-  // Security headers for better SEO and security
+
   async headers() {
     return [
       {
@@ -24,7 +23,7 @@ const nextConfig: NextConfig = {
     ]
   },
 
-  // Image optimization
+
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
