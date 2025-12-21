@@ -6,14 +6,6 @@ import nodemailer from 'nodemailer';
 // GET all contacts
 export async function GET(request: NextRequest) {
     try {
-        if (!process.env.MONGODB_URI) {
-            return NextResponse.json({
-                success: true,
-                error: 'Database not configured yet',
-                data: []
-            });
-        }
-
         await dbConnect();
 
         const { searchParams } = new URL(request.url);
@@ -42,11 +34,11 @@ export async function GET(request: NextRequest) {
         console.error('Contacts API Error:', error);
         return NextResponse.json(
             {
-                success: true,
+                success: false,
                 error: error instanceof Error ? error.message : 'Failed to fetch contacts',
                 data: []
             },
-            { status: 200 }
+            { status: 500 }
         );
     }
 }
@@ -57,14 +49,15 @@ export async function POST(request: NextRequest) {
         const body = await request.json();
         let contact;
 
-        // 1. Try to save to Database (if configured)
-        if (process.env.MONGODB_URI) {
-            try {
-                await dbConnect();
-                contact = await Contact.create(body);
-            } catch (dbError) {
-                console.error('Database save failed:', dbError);
-                // Continue to send email even if DB fails
+        // 1. Try to save to Database
+        try {
+            await dbConnect();
+            contact = await Contact.create(body);
+        } catch (dbError) {
+            console.error('Database save failed:', dbError);
+            // Continue if email is configured, otherwise fail
+            if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+                throw new Error('Could not save contact or send email');
             }
         }
 
@@ -81,7 +74,7 @@ export async function POST(request: NextRequest) {
 
                 const mailOptions = {
                     from: process.env.EMAIL_USER,
-                    to: 'fatimazahra20033@gmail.com', // Destination email
+                    to: process.env.EMAIL_RECEIVER || 'fatimazahra20033@gmail.com', // Fallback to original
                     subject: `New Portfolio Contact: ${body.subject}`,
                     text: `
                         Name: ${body.name}
@@ -102,20 +95,18 @@ export async function POST(request: NextRequest) {
                 await transporter.sendMail(mailOptions);
             } catch (emailError) {
                 console.error('Email send failed:', emailError);
-                // If email fails and DB failed/not configured, then it's a real error
+                // If email fails and DB failed, then it's a real error
                 if (!contact) {
-                    throw new Error('Failed to send message');
+                    throw new Error('Failed to process message (DB and Email failed)');
                 }
             }
-        } else {
-            console.warn('Email credentials not found in environment variables');
         }
 
         return NextResponse.json(
             {
                 success: true,
                 data: contact,
-                message: 'Message processed'
+                message: 'Message processed successfully'
             },
             { status: 201 }
         );
@@ -125,7 +116,7 @@ export async function POST(request: NextRequest) {
                 success: false,
                 error: error instanceof Error ? error.message : 'Failed to create contact',
             },
-            { status: 400 }
+            { status: 500 }
         );
     }
 }

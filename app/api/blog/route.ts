@@ -5,15 +5,6 @@ import BlogPost from '@/models/BlogPost';
 // GET all blog posts
 export async function GET(request: NextRequest) {
     try {
-        // Check if MongoDB is configured
-        if (!process.env.MONGODB_URI) {
-            return NextResponse.json({
-                success: true,
-                error: 'Database not configured yet. Please check BLOG_SETUP.md',
-                data: []
-            });
-        }
-
         await dbConnect();
 
         const { searchParams } = new URL(request.url);
@@ -47,11 +38,11 @@ export async function GET(request: NextRequest) {
         console.error('Blog API Error:', error);
         return NextResponse.json(
             {
-                success: true,
+                success: false,
                 error: error instanceof Error ? error.message : 'Failed to fetch posts',
                 data: []
             },
-            { status: 200 }
+            { status: 500 }
         );
     }
 }

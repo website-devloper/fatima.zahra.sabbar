@@ -5,14 +5,6 @@ import Project from '@/models/Project';
 // GET all projects
 export async function GET(request: NextRequest) {
     try {
-        if (!process.env.MONGODB_URI) {
-            return NextResponse.json({
-                success: true,
-                error: 'Database not configured yet',
-                data: []
-            });
-        }
-
         await dbConnect();
 
         const { searchParams } = new URL(request.url);
@@ -46,11 +38,11 @@ export async function GET(request: NextRequest) {
         console.error('Projects API Error:', error);
         return NextResponse.json(
             {
-                success: true,
+                success: false,
                 error: error instanceof Error ? error.message : 'Failed to fetch projects',
                 data: []
             },
-            { status: 200 }
+            { status: 500 }
         );
     }
 }
