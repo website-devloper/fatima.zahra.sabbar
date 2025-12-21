@@ -72,7 +72,6 @@ const BlogPostSchema = new Schema<IBlogPost>(
 );
 
 // Create index for faster queries
-BlogPostSchema.index({ slug: 1 });
 BlogPostSchema.index({ category: 1 });
 BlogPostSchema.index({ published: 1 });
 BlogPostSchema.index({ createdAt: -1 });
