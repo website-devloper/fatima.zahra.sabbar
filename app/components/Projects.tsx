@@ -24,7 +24,7 @@ const Projects = () => {
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const response = await fetch('/api/projects?limit=6');
+        const response = await fetch('/api/projects');
         const data = await response.json();
         if (data.success) {
           setProjects(data.data || []);
